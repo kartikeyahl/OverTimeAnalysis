@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <div>
+    <p>Click on the "Choose File" button to upload a file:</p>
+    <form method="POST" enctype="multipart/form-data" action={% url 'analysis' %}> {% csrf_token %}
+        <h3>Dataset File</h3>
+        <input type="file" id="data_file" name="data_file" accept=".xlsx" required="" class="upload-box">
+        <br><br>
+        <input type="submit" name="" value="Upload" class="submit">
+    </form>
+</div> -->
+
+
+<div class="bg">
+    <div class="container"> 
+        <form method="POST" enctype="multipart/form-data" action={% url 'analysis' %}> {% csrf_token %}   
+          <a class="btn btn-info btn-lg">
+             <input type="file" id="data_file" name="data_file" accept=".xlsx" required="" class="upload-box">
+          </a>
+          
+        <br><br>
+      
+        <input type="image" name="" value="Upload" class="submit" src="data:image/png;base64,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" alt="Submit" width="48" height="48">
+      </div>
+      </div>
+
+
+
+
+{% endblock content %}
